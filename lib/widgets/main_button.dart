@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/configs/themes/app_colors.dart';
+import 'package:get/get.dart';
 
 class MainButton extends StatelessWidget {
   final String title;
@@ -37,8 +38,11 @@ class MainButton extends StatelessWidget {
                     child: Text(
                       title,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: onSurfaceTextColor),
+                        fontWeight: FontWeight.bold,
+                        color: Get.isDarkMode
+                            ? onSurfaceTextColor
+                            : Theme.of(context).primaryColor,
+                      ),
                     ),
                   ),
             ),

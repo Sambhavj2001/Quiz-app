@@ -6,6 +6,7 @@ import 'package:quiz_app/models/question_paper_model.dart';
 import 'package:quiz_app/services/firebase_storage_services.dart';
 import 'package:quiz_app/utils/app_logger.dart';
 
+import '../../screens/questions/questions_screen.dart';
 import '../auth_controller.dart';
 
 class QuestionPaperController extends GetxController {
@@ -45,9 +46,10 @@ class QuestionPaperController extends GetxController {
     if (_authController.isLoggedIn()) {
       if (tryAgain) {
         Get.back();
-        //Get.offNamed();
+        Get.toNamed(QuestionsScreen.routeName,
+            arguments: paper, preventDuplicates: false);
       } else {
-        //Get.toNamed();
+        Get.toNamed(QuestionsScreen.routeName, arguments: paper);
       }
     } else {
       _authController.showLoginAlertDialogue();
